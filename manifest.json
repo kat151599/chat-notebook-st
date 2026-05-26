@@ -1,0 +1,9 @@
+{
+  "display_name": "Chat Notebook",
+  "author": "YourName",
+  "version": "1.0.0",
+  "js": "index.js",
+  "css": "style.css",
+  "loading_order": 10,
+  "requires": []
+}
