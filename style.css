@@ -1,45 +1,136 @@
-#chat_notebook_button {
-    position: fixed;
-    right: 20px;
-    bottom: 120px;
-    z-index: 99999;
-
-    padding: 10px 12px;
-    background: #444;
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 14px;
-}
+/* ============================================================
+   Chat Notebook — styles
+   ============================================================ */
 
 #chat_notebook_modal {
     display: none;
     position: fixed;
     right: 20px;
     bottom: 170px;
-
-    width: 320px;
-    height: 420px;
-
-    background: var(--SmartThemeBlurTintColor);
-    border: 1px solid var(--SmartThemeBorderColor);
+    width: 360px;
+    height: 440px;
+    background: var(--SmartThemeBlurTintColor, #1e1e2e);
+    border: 1px solid var(--SmartThemeBorderColor, #555);
     border-radius: 12px;
-
     z-index: 99999;
-    padding: 10px;
+    padding: 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    /* CSS trick: display:none set inline; flex used when visible */
 }
 
-#chat_notebook_textarea {
-    width: 100%;
-    height: 100%;
-    resize: none;
+/* Header */
+#chat_notebook_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: var(--SmartThemeBlurTintColor, #1e1e2e);
+    border-bottom: 1px solid var(--SmartThemeBorderColor, #444);
+    border-radius: 12px 12px 0 0;
+    user-select: none;
+    flex-shrink: 0;
+}
 
+#chat_notebook_title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--SmartThemeBodyColor, #cdd6f4);
+    letter-spacing: 0.03em;
+    opacity: 0.85;
+}
+
+#chat_notebook_title i {
+    color: var(--SmartThemeQuoteColor, #cba6f7);
+}
+
+#chat_notebook_actions {
+    display: flex;
+    gap: 4px;
+}
+
+#chat_notebook_actions button {
     background: transparent;
-    color: var(--SmartThemeBodyColor);
+    border: none;
+    color: var(--SmartThemeBodyColor, #cdd6f4);
+    opacity: 0.55;
+    cursor: pointer;
+    padding: 3px 6px;
+    border-radius: 6px;
+    transition: opacity 0.15s, background 0.15s;
+    font-size: 13px;
+    line-height: 1;
+}
 
+#chat_notebook_actions button:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+#chat_notebook_clear:hover {
+    color: #f38ba8 !important;
+}
+
+/* Textarea */
+#chat_notebook_textarea {
+    flex: 1 1 auto;
+    width: 100%;
+    resize: none;
+    background: transparent;
     border: none;
     outline: none;
+    color: var(--SmartThemeBodyColor, #cdd6f4);
+    font-size: 13.5px;
+    line-height: 1.55;
+    padding: 10px 14px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
 
-    font-size: 14px;
-    line-height: 1.4;
+#chat_notebook_textarea::placeholder {
+    color: var(--SmartThemeBodyColor, #888);
+    opacity: 0.35;
+}
+
+/* Scrollbar */
+#chat_notebook_textarea::-webkit-scrollbar {
+    width: 4px;
+}
+#chat_notebook_textarea::-webkit-scrollbar-thumb {
+    background: var(--SmartThemeBorderColor, #555);
+    border-radius: 4px;
+}
+
+/* Footer */
+#chat_notebook_footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 12px 7px;
+    border-top: 1px solid var(--SmartThemeBorderColor, #444);
+    flex-shrink: 0;
+}
+
+#chat_notebook_status,
+#chat_notebook_chars {
+    font-size: 11px;
+    color: var(--SmartThemeBodyColor, #888);
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+#chat_notebook_status:not(:empty) {
+    opacity: 0.8;
+    color: var(--SmartThemeQuoteColor, #a6e3a1);
+}
+
+/* When modal is visible — make it flex */
+#chat_notebook_modal[style*="display: block"],
+#chat_notebook_modal[style*="display:block"],
+#chat_notebook_modal[style*="display: flex"],
+#chat_notebook_modal[style*="display:flex"] {
+    display: flex !important;
+    flex-direction: column;
 }
