@@ -1,9 +1,10 @@
 {
-  "display_name": "Chat Notebook",
-  "version": "1.0.0",
-  "author": "LL",
-  "js": "index.js",
-  "css": "style.css",
-  "loading_order": 10,
-  "requires": []
+    "display_name": "Chat Notebook",
+    "loading_order": 5,
+    "js": "index.js",
+    "css": "style.css",
+    "author": "LL",
+    "version": "1.0.0",
+    "homePage": "",
+    "auto_update": false
 }
